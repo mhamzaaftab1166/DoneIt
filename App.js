@@ -1,15 +1,15 @@
 import { View } from "react-native";
 import Card from "./app/components/Card";
+import ListingDetailScreen from "./app/screens/ListingDetailScreen";
 export default function App() {
   return (
     <View
       style={{
         backgroundColor: "#f8f4f4",
-        padding: 20,
-        paddingTop: 100,
       }}
     >
-      <Card
+      <ListingDetailScreen></ListingDetailScreen>
+      {/* <Card
         title={"Red Jacket For Sale"}
         subTitle={"$10"}
         image={require("./app/assets/jacket.jpg")}
@@ -18,7 +18,7 @@ export default function App() {
         title={"Red Jacket For Sale"}
         subTitle={"$10"}
         image={require("./app/assets/jacket.jpg")}
-      ></Card>
+      ></Card> */}
     </View>
   );
 }
