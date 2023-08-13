@@ -8,6 +8,7 @@ function SafeScreen({ children }) {
 const styles = StyleSheet.create({
   screen: {
     paddingTop: Constants.statusBarHeight,
+    height: "100%",
   },
 });
 export default SafeScreen;
