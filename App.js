@@ -4,17 +4,18 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { View } from "react-native";
 import SafeScreen from "./app/components/SafeScreen";
 import Icon from "./app/components/Icon";
+import ListItem from "./app/components/ListItem";
 
 export default function App() {
   return (
-    <SafeScreen>
-      <Icon
-        name={"email"}
-        size={50}
-        backgroundColor="red"
-        iconColor="white"
-      ></Icon>
-    </SafeScreen>
+    <GestureHandlerRootView>
+      <SafeScreen>
+        <ListItem
+          title={"my title"}
+          ImageComponent={<Icon name={"email"}></Icon>}
+        ></ListItem>
+      </SafeScreen>
+    </GestureHandlerRootView>
     // <GestureHandlerRootView>
     //   <MessagesScreen />
     // </GestureHandlerRootView>
