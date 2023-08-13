@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 function Icon({
   name,
-  size = 40,
+  size = 42,
   backgroundColor = "#000",
   iconColor = "white",
 }) {

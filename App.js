@@ -5,16 +5,12 @@ import { View } from "react-native";
 import SafeScreen from "./app/components/SafeScreen";
 import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
+import AccountScreen from "./app/screens/AccountScreen";
 
 export default function App() {
   return (
     <GestureHandlerRootView>
-      <SafeScreen>
-        <ListItem
-          title={"my title"}
-          ImageComponent={<Icon name={"email"}></Icon>}
-        ></ListItem>
-      </SafeScreen>
+      <AccountScreen></AccountScreen>
     </GestureHandlerRootView>
     // <GestureHandlerRootView>
     //   <MessagesScreen />
