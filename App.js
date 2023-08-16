@@ -1,4 +1,4 @@
-import { Switch, Text, TextInput, View } from "react-native";
+import { Switch, Text, TextInput, TouchableOpacity, View } from "react-native";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import SafeScreen from "./app/components/SafeScreen";
 import { useState } from "react";
