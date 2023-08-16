@@ -1,16 +1,25 @@
-import { Switch, Text, TextInput, TouchableOpacity, View } from "react-native";
-import ListingsScreen from "./app/screens/ListingsScreen";
 import SafeScreen from "./app/components/SafeScreen";
-import { useState } from "react";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
-
+const cat = [
+  {
+    label: "Furniture",
+    value: 1,
+  },
+  {
+    label: "Clothing",
+    value: 2,
+  },
+  {
+    label: "Cameras",
+    value: 3,
+  },
+];
 export default function App() {
-  const [name, setName] = useState(false);
   return (
     <SafeScreen>
       <AppTextInput icon={"email"} placeholder={"Name"} />
-      <AppPicker icon={"apps"} placeholder={"Category"} />
+      <AppPicker items={cat} icon={"apps"} placeholder={"Category"} />
     </SafeScreen>
   );
 }
