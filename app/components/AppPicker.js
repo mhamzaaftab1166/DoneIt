@@ -13,12 +13,19 @@ import AppText from "./AppText";
 import SafeScreen from "./SafeScreen";
 import ItemPicker from "./ItemPicker";
 import colors from "../config/colors";
-function AppPicker({ icon, items, placeholder, selectedItem, onSelectedItem }) {
+function AppPicker({
+  icon,
+  items,
+  placeholder,
+  width = "100%",
+  selectedItem,
+  onSelectedItem,
+}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width: width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -74,7 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
     alignItems: "center",
