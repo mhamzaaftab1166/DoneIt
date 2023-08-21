@@ -1,7 +1,6 @@
 import React from "react";
 import SafeScreen from "../components/SafeScreen";
 import { Image, StyleSheet } from "react-native";
-import { Formik } from "formik";
 import * as Yup from "yup";
 import AppFormField from "../components/forms/AppFormField";
 import SubmitButton from "../components/forms/SubmitButton";
