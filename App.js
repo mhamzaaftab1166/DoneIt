@@ -3,6 +3,7 @@ import SafeScreen from "./app/components/SafeScreen";
 import * as ImagePicker from "expo-image-picker";
 import ImageInput from "./app/components/ImageInput";
 import ImageInputList from "./app/components/ImageInputList";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 function App(props) {
   const [imageUris, setImageUris] = useState([]);
@@ -15,20 +16,7 @@ function App(props) {
   useEffect(() => {
     requestPermission();
   }, []);
-  const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri]);
-  };
-  const handleRemove = (uri) => {
-    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
-  };
-  return (
-    <SafeScreen>
-      <ImageInputList
-        imageUris={imageUris}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
-    </SafeScreen>
-  );
+
+  return <ListingEditScreen />;
 }
 export default App;
