@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import NavigationTheme from "./app/navigation/NavigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 const Tweets = ({ navigation }) => {
   return (
     <SafeScreen>
@@ -59,32 +60,32 @@ const Account = () => (
     <Text>accout</Text>
   </SafeScreen>
 );
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => (
-  <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: "tomato",
-      activeTintColor: "white",
-      inactiveBackgroundColor: "#eee",
-      inactiveTintColor: "black",
-    }}
-  >
-    <Tab.Screen
-      options={{
-        tabBarIcon: ({ size, color }) => (
-          <MaterialCommunityIcons name="home" color={color} size={size} />
-        ),
-      }}
-      name="Feed"
-      component={StackNavigator}
-    />
-    <Tab.Screen name="Account" component={Account} />
-  </Tab.Navigator>
-);
+// const Tab = createBottomTabNavigator();
+// const TabNavigator = () => (
+//   <Tab.Navigator
+//   // tabBarOptions={{
+//   //   activeBackgroundColor: "tomato",
+//   //   activeTintColor: "white",
+//   //   inactiveBackgroundColor: "#eee",
+//   //   inactiveTintColor: "black",
+//   // }}
+//   >
+//     <Tab.Screen
+//       options={{
+//         tabBarIcon: ({ size, color }) => (
+//           <MaterialCommunityIcons name="home" color={color} size={size} />
+//         ),
+//       }}
+//       name="Feed"
+//       component={StackNavigator}
+//     />
+//     <Tab.Screen name="Account" component={Account} />
+//   </Tab.Navigator>
+// );
 function App(props) {
   return (
     <NavigationContainer theme={NavigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }
