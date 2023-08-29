@@ -6,6 +6,7 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import NavigationTheme from "./app/navigation/NavigationTheme";
 const Tweets = ({ navigation }) => {
   return (
     <SafeScreen>
@@ -82,7 +83,7 @@ const TabNavigator = () => (
 );
 function App(props) {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={NavigationTheme}>
       <AuthNavigator />
     </NavigationContainer>
   );
