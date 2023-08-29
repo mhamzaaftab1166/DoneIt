@@ -23,17 +23,18 @@ const listings = [
     image: require("../assets/couch.jpg"),
   },
 ];
-function ListingsScreen(props) {
+function ListingsScreen({ navigation }) {
   return (
     <SafeScreen style={styles.screen}>
       <FlatList
         data={listings}
-        keyExtractor={(listing) => listing.id}
+        keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            onPress={() => navigation.navigate("ListingDetailScreen", item)}
           />
         )}
       />
