@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import ListItem from "../components/ListItem";
-import SafeScreen from "../components/SafeScreen";
+import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
 import ListItemSeprator from "../components/ListItemSeprator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 const initialMessages = [
@@ -25,7 +25,7 @@ function MessagesScreen(props) {
     setMessages(messages.filter((m) => m.id !== message.id));
   };
   return (
-    <SafeScreen>
+    <NavigateSafeScreen>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
@@ -53,7 +53,7 @@ function MessagesScreen(props) {
         }
         ItemSeparatorComponent={ListItemSeprator}
       />
-    </SafeScreen>
+    </NavigateSafeScreen>
   );
 }
 const styles = StyleSheet.create({});

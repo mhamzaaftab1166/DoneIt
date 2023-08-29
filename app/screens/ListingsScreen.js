@@ -3,6 +3,8 @@ import SafeScreen from "../components/SafeScreen";
 import { FlatList, StyleSheet } from "react-native";
 import Card from "../components/Card";
 import colors from "../config/colors";
+import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
+
 const listings = [
   {
     id: 1,
@@ -25,7 +27,7 @@ const listings = [
 ];
 function ListingsScreen({ navigation }) {
   return (
-    <SafeScreen style={styles.screen}>
+    <NavigateSafeScreen style={styles.screen}>
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -38,7 +40,7 @@ function ListingsScreen({ navigation }) {
           />
         )}
       />
-    </SafeScreen>
+    </NavigateSafeScreen>
   );
 }
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import React from "react";
-import SafeScreen from "../components/SafeScreen";
+import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
 import ListItem from "../components/ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
 import colors from "../config/colors";
@@ -20,12 +20,13 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
   return (
     <GestureHandlerRootView>
-      <SafeScreen style={styles.screen}>
+      <NavigateSafeScreen style={styles.screen}>
         <View style={styles.container}>
           <ListItem
             title={"M. Hamza Aftab"}
@@ -46,6 +47,7 @@ function AccountScreen(props) {
                     backgroundColor={item.icon.backgroundColor}
                   ></Icon>
                 }
+                onPress={() => navigation.navigate(item.targetScreen)}
               ></ListItem>
             )}
             ItemSeparatorComponent={ListItemSeprator}
@@ -55,7 +57,7 @@ function AccountScreen(props) {
           title={"Log Out"}
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d"></Icon>}
         ></ListItem>
-      </SafeScreen>
+      </NavigateSafeScreen>
     </GestureHandlerRootView>
   );
 }
