@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import Icon from "../components/Icon";
 import ListItemSeprator from "../components/ListItemSeprator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import routes from "../navigation/routes";
 const menuItems = [
   {
     title: "My Listing",
@@ -20,7 +21,7 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
-    targetScreen: "Messages",
+    targetScreen: routes.MESSAGES,
   },
 ];
 function AccountScreen({ navigation }) {
