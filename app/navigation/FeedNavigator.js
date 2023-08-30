@@ -13,13 +13,13 @@ const FeedNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerShown: false,
         gestureEnabled: true,
         ...TransitionPresets.ModalSlideFromBottomIOS,
       }}
     >
       <Stack.Screen name="Listings" component={ListingsScreen} />
       <Stack.Screen
-        options={{ headerShown: false }}
         name="ListingDetailScreen"
         component={ListingDetailScreen}
       />

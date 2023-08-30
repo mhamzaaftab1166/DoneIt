@@ -6,60 +6,60 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AuthNavigator from "./app/navigation/AuthNavigator";
-import NavigationTheme from "./app/navigation/NavigationTheme";
+import NavigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
-const Tweets = ({ navigation }) => {
-  return (
-    <SafeScreen>
-      <Text>Tweets list</Text>
-      <Button
-        title="view tweet detail"
-        onPress={() => navigation.navigate("TweetDetail", { id: 12 })}
-      />
-    </SafeScreen>
-  );
-};
+// const Tweets = ({ navigation }) => {
+//   return (
+//     <SafeScreen>
+//       <Text>Tweets list</Text>
+//       <Button
+//         title="view tweet detail"
+//         onPress={() => navigation.navigate("TweetDetail", { id: 12 })}
+//       />
+//     </SafeScreen>
+//   );
+// };
 
-const TweetDetail = ({ route }) => {
-  return (
-    <SafeScreen>
-      <Text>Tweet Detail {route.params.id}</Text>
-    </SafeScreen>
-  );
-};
+// const TweetDetail = ({ route }) => {
+//   return (
+//     <SafeScreen>
+//       <Text>Tweet Detail {route.params.id}</Text>
+//     </SafeScreen>
+//   );
+// };
 
-const Stack = createStackNavigator();
-const StackNavigator = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: "dodgerblue" },
-        headerTintColor: "white",
-        headerTitleAlign: "center",
-      }}
-    >
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: "tomato" },
-          headerTintColor: "white",
-        }}
-        name="Tweets"
-        component={Tweets}
-      />
-      <Stack.Screen
-        options={{ title: "lora mera" }}
-        name="TweetDetail"
-        component={TweetDetail}
-      />
-    </Stack.Navigator>
-  );
-};
+// const Stack = createStackNavigator();
+// const StackNavigator = () => {
+//   return (
+//     <Stack.Navigator
+//       screenOptions={{
+//         headerStyle: { backgroundColor: "dodgerblue" },
+//         headerTintColor: "white",
+//         headerTitleAlign: "center",
+//       }}
+//     >
+//       <Stack.Screen
+//         options={{
+//           headerStyle: { backgroundColor: "tomato" },
+//           headerTintColor: "white",
+//         }}
+//         name="Tweets"
+//         component={Tweets}
+//       />
+//       <Stack.Screen
+//         options={{ title: "lora mera" }}
+//         name="TweetDetail"
+//         component={TweetDetail}
+//       />
+//     </Stack.Navigator>
+//   );
+// };
 
-const Account = () => (
-  <SafeScreen>
-    <Text>accout</Text>
-  </SafeScreen>
-);
+// const Account = () => (
+//   <SafeScreen>
+//     <Text>accout</Text>
+//   </SafeScreen>
+// );
 // const Tab = createBottomTabNavigator();
 // const TabNavigator = () => (
 //   <Tab.Navigator
@@ -71,11 +71,11 @@ const Account = () => (
 //   // }}
 //   >
 //     <Tab.Screen
-//       options={{
-//         tabBarIcon: ({ size, color }) => (
-//           <MaterialCommunityIcons name="home" color={color} size={size} />
-//         ),
-//       }}
+// options={{
+//   tabBarIcon: ({ size, color }) => (
+//     <MaterialCommunityIcons name="home" color={color} size={size} />
+//   ),
+// }}
 //       name="Feed"
 //       component={StackNavigator}
 //     />
