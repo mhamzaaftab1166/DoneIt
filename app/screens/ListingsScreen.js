@@ -8,26 +8,19 @@ import routes from "../navigation/routes";
 import litingsApi from "../api/listings";
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
+import useApi from "../hooks/useApi";
 
 function ListingsScreen({ navigation }) {
-  const [listings, setLitings] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const {
+    data: listings,
+    loading,
+    error,
+    request: loadListing,
+  } = useApi(litingsApi.getListings);
 
   useEffect(() => {
     loadListing();
   }, []);
-
-  const loadListing = async () => {
-    setLoading(true);
-    const response = await litingsApi.getListings();
-    setLoading(false);
-
-    if (!response.ok) return setError(true);
-
-    setError(false);
-    setLitings(response.data);
-  };
 
   return (
     <SafeScreen style={styles.screen}>
