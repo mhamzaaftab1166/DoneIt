@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { StyleSheet } from "react-native";
 import SafeScreen from "../components/SafeScreen";
@@ -10,6 +10,7 @@ import CategoryPickerItem from "../components/CategoryPickerItem";
 import AppFormImagePicker from "../components/forms/AppFormImagePicker";
 import useLocation from "../hooks/useLocation";
 import litingsApi from "../api/listings";
+import UploadScreen from "./UploadScreen";
 
 const validationSchema = Yup.object({
   title: Yup.string().required().min(1).label("Title"),
@@ -76,15 +77,33 @@ const categories = [
 ];
 
 function ListingEditScreen(props) {
+  const [visible, setVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
   const location = useLocation();
 
   const handleSubmit = async (listing) => {
-    const result = await litingsApi.addListing({ ...listing, location });
-    if (!result.ok) return alert("Couldn't Save Listing");
-    alert("Listing Posted");
+    setVisible(true);
+    setProgress(0);
+    const result = await litingsApi.addListing(
+      { ...listing, location },
+      (progress) => {
+        console.log(progress);
+        setProgress(progress);
+      }
+    );
+
+    if (!result.ok) {
+      setVisible(false);
+      return alert("Couldn't Save Listing");
+    }
   };
   return (
     <SafeScreen style={styles.container}>
+      <UploadScreen
+        onDone={() => setVisible(false)}
+        progress={progress}
+        visible={visible}
+      />
       <AppForm
         initialValues={{
           images: [],
