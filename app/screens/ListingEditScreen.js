@@ -81,7 +81,7 @@ function ListingEditScreen(props) {
   const [progress, setProgress] = useState(0);
   const location = useLocation();
 
-  const handleSubmit = async (listing) => {
+  const handleSubmit = async (listing, { resetForm }) => {
     setVisible(true);
     setProgress(0);
     const result = await litingsApi.addListing(
@@ -96,6 +96,7 @@ function ListingEditScreen(props) {
       setVisible(false);
       return alert("Couldn't Save Listing");
     }
+    resetForm();
   };
   return (
     <SafeScreen style={styles.container}>
