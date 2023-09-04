@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
 import ListItem from "../components/ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
@@ -7,6 +7,8 @@ import Icon from "../components/Icon";
 import ListItemSeprator from "../components/ListItemSeprator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import routes from "../navigation/routes";
+import AuthContext from "../auth/context";
+
 const menuItems = [
   {
     title: "My Listing",
@@ -25,13 +27,14 @@ const menuItems = [
   },
 ];
 function AccountScreen({ navigation }) {
+  const { user } = useContext(AuthContext);
   return (
     <GestureHandlerRootView>
       <NavigateSafeScreen style={styles.screen}>
         <View style={styles.container}>
           <ListItem
-            title={"M. Hamza Aftab"}
-            subTitle={"mhamzaaftab1166@gmail.com"}
+            title={user.name}
+            subTitle={user.email}
             image={require("../assets/hamza.jpeg")}
           />
         </View>
