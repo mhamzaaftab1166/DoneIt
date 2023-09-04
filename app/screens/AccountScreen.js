@@ -27,7 +27,7 @@ const menuItems = [
   },
 ];
 function AccountScreen({ navigation }) {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   return (
     <GestureHandlerRootView>
       <NavigateSafeScreen style={styles.screen}>
@@ -58,6 +58,7 @@ function AccountScreen({ navigation }) {
           ></FlatList>
         </View>
         <ListItem
+          onPress={() => setUser(null)}
           title={"Log Out"}
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d"></Icon>}
         ></ListItem>
