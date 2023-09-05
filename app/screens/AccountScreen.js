@@ -8,6 +8,7 @@ import ListItemSeprator from "../components/ListItemSeprator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import routes from "../navigation/routes";
 import AuthContext from "../auth/context";
+import authStorage from "../auth/storage";
 
 const menuItems = [
   {
@@ -58,7 +59,10 @@ function AccountScreen({ navigation }) {
           ></FlatList>
         </View>
         <ListItem
-          onPress={() => setUser(null)}
+          onPress={() => {
+            setUser(null);
+            authStorage.removeToken();
+          }}
           title={"Log Out"}
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d"></Icon>}
         ></ListItem>

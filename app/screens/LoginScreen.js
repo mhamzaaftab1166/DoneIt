@@ -10,6 +10,7 @@ import authApi from "../api/auth";
 import AppErrorMessage from "../components/forms/AppErrorMessage";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../auth/context";
+import authStorage from "../auth/storage";
 
 const validationSchema = Yup.object({
   email: Yup.string().required().email().label("Email"),
@@ -25,6 +26,7 @@ function LoginScreen(props) {
     setLoginFailed(false);
     const userObj = jwtDecode(result.data);
     setUser(userObj);
+    authStorage.storeToken(result.data);
   };
 
   return (
