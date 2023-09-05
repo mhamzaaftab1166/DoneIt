@@ -1,9 +1,15 @@
 import { create } from "apisauce";
 import cache from "../utility/cache";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import authStorage from "../auth/storage";
 
 const apiClient = create({
   baseURL: "http://192.168.42.186:9000/api",
+});
+
+apiClient.addAsyncRequestTransform(async (resuest) => {
+  const authToken = await authStorage.getToken();
+  if (!authToken) return null;
+  resuest.headers["x-auth-token"] = authToken;
 });
 
 const get = apiClient.get;
