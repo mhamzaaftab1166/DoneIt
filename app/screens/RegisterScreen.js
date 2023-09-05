@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
@@ -7,6 +7,11 @@ import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
 import AppButton from "../components/AppButton";
+import userApi from "../api/register";
+import useAuth from "../auth/useAuth";
+import authApi from "../api/auth";
+import AppErrorMessage from "../components/forms/AppErrorMessage";
+import SubmitButton from "../components/forms/SubmitButton";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -15,13 +20,34 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterScreen() {
+  const [error, setError] = useState();
+  const [errorVisible, setErrorVisible] = useState(false);
+  const { login } = useAuth();
+
+  const handleSubmit = async (userInfo) => {
+    const result = await userApi.register(userInfo);
+    if (!result.ok) {
+      setErrorVisible(true);
+      if (result.data) setError(result.data.error);
+      else setError("an unexpected error occur.");
+      return;
+    }
+    setErrorVisible(false);
+    const { data: authToken } = await authApi.login(
+      userInfo.email,
+      userInfo.password
+    );
+    login(authToken);
+  };
+
   return (
     <NavigateSafeScreen style={styles.container}>
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
+        <AppErrorMessage error={error} visible={errorVisible} />
         <AppFormField
           autoCorrect={false}
           icon="account"
@@ -46,7 +72,7 @@ function RegisterScreen() {
           secureTextEntry
           textContentType="password"
         />
-        <AppButton title="Register" />
+        <SubmitButton title="Register" />
       </AppForm>
     </NavigateSafeScreen>
   );

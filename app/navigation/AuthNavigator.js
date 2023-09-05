@@ -7,7 +7,11 @@ import RegisterScreen from "../screens/RegisterScreen";
 const Stack = createStackNavigator();
 const AuthNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleAlign: "center",
+      }}
+    >
       <Stack.Screen
         options={{ headerShown: false }}
         name="Welcome"
