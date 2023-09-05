@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import NavigateSafeScreen from "../navigation/NavigateSafeScreen";
 import ListItem from "../components/ListItem";
 import { FlatList, StyleSheet, View } from "react-native";
@@ -7,8 +7,7 @@ import Icon from "../components/Icon";
 import ListItemSeprator from "../components/ListItemSeprator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import routes from "../navigation/routes";
-import AuthContext from "../auth/context";
-import authStorage from "../auth/storage";
+import useAuth from "../auth/useAuth";
 
 const menuItems = [
   {
@@ -28,7 +27,8 @@ const menuItems = [
   },
 ];
 function AccountScreen({ navigation }) {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, logout } = useAuth();
+
   return (
     <GestureHandlerRootView>
       <NavigateSafeScreen style={styles.screen}>
@@ -59,10 +59,7 @@ function AccountScreen({ navigation }) {
           ></FlatList>
         </View>
         <ListItem
-          onPress={() => {
-            setUser(null);
-            authStorage.removeToken();
-          }}
+          onPress={() => logout()}
           title={"Log Out"}
           IconComponent={<Icon name="logout" backgroundColor="#ffe66d"></Icon>}
         ></ListItem>
