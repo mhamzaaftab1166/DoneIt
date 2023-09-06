@@ -1,31 +1,41 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 import { Image } from "react-native-expo-image-cache";
+import { KeyboardAvoidingView, Platform, View } from "react-native";
+import ContactSellerForm from "../components/forms/ContactSellerForm";
 
 function ListingDetailScreen({ route }) {
   const listing = route.params;
   return (
     <View>
-      <Image
-        style={styles.image}
-        tint="light"
-        uri={listing.images[0].url}
-        preview={{ uri: listing.images[0].thumbnailUrl }}
-      />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{listing.title}</AppText>
-        <AppText style={styles.price}>${listing.price}</AppText>
-        <View style={styles.userContainer}>
-          <ListItem
-            title={"Hamza Aftab"}
-            subTitle={"4 Listings"}
-            image={require("../assets/hamza.jpeg")}
-          ></ListItem>
+      <KeyboardAvoidingView
+        behavior="position"
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+      >
+        <Image
+          style={styles.image}
+          tint="light"
+          uri={listing.images[0].url}
+          preview={{ uri: listing.images[0].thumbnailUrl }}
+        />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title}>{listing.title}</AppText>
+          <AppText style={styles.price}>${listing.price}</AppText>
+          <View style={styles.userContainer}>
+            <ListItem
+              title={"Hamza Aftab"}
+              subTitle={"4 Listings"}
+              image={require("../assets/hamza.jpeg")}
+            ></ListItem>
+          </View>
         </View>
-      </View>
+        <View style={styles.contactContainer}>
+          <ContactSellerForm listing={listing} />
+        </View>
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -49,6 +59,9 @@ const styles = StyleSheet.create({
   },
   userContainer: {
     marginVertical: 30,
+  },
+  contactContainer: {
+    padding: 10,
   },
 });
 export default ListingDetailScreen;
