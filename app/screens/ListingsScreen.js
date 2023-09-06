@@ -23,30 +23,32 @@ function ListingsScreen({ navigation }) {
   }, []);
 
   return (
-    <SafeScreen style={styles.screen}>
+    <>
       <ActivityIndicator visible={loading} />
-      {error && (
-        <>
-          <AppText style={{ color: colors.danger, textAlign: "center" }}>
-            Couldn't Retrive listings.
-          </AppText>
-          <AppButton title="Retry" onPress={loadListing} />
-        </>
-      )}
-      <FlatList
-        data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subTitle={"$" + item.price}
-            imageUrl={item.images[0].url}
-            thumbnailUrl={item.images[0].thumbnailUrl}
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-          />
+      <SafeScreen style={styles.screen}>
+        {error && (
+          <>
+            <AppText style={{ color: colors.danger, textAlign: "center" }}>
+              Couldn't Retrive listings.
+            </AppText>
+            <AppButton title="Retry" onPress={loadListing} />
+          </>
         )}
-      />
-    </SafeScreen>
+        <FlatList
+          data={listings}
+          keyExtractor={(listing) => listing.id.toString()}
+          renderItem={({ item }) => (
+            <Card
+              title={item.title}
+              subTitle={"$" + item.price}
+              imageUrl={item.images[0].url}
+              thumbnailUrl={item.images[0].thumbnailUrl}
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            />
+          )}
+        />
+      </SafeScreen>
+    </>
   );
 }
 const styles = StyleSheet.create({
