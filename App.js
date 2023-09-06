@@ -3,11 +3,12 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import AppNavigator from "./app/navigation/AppNavigator";
 import NavigationTheme from "./app/navigation/navigationTheme";
 import OfflineNotice from "./app/components/OfflineNotice";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 
 import * as SplashScreen from "expo-splash-screen";
+import { navigationRef } from "./app/navigation/rootNavigation";
 
 function App(props) {
   const [user, setUser] = useState();
@@ -43,6 +44,7 @@ function App(props) {
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
       <NavigationContainer
+        ref={navigationRef}
         theme={NavigationTheme}
         onReady={onNavigationContainerReady}
       >
