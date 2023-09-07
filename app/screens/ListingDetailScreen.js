@@ -10,33 +10,31 @@ import ContactSellerForm from "../components/forms/ContactSellerForm";
 function ListingDetailScreen({ route }) {
   const listing = route.params;
   return (
-    <View>
-      <KeyboardAvoidingView
-        behavior="position"
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
-      >
-        <Image
-          style={styles.image}
-          tint="light"
-          uri={listing.images[0].url}
-          preview={{ uri: listing.images[0].thumbnailUrl }}
-        />
-        <View style={styles.detailsContainer}>
-          <AppText style={styles.title}>{listing.title}</AppText>
-          <AppText style={styles.price}>${listing.price}</AppText>
-          <View style={styles.userContainer}>
-            <ListItem
-              title={"Hamza Aftab"}
-              subTitle={"4 Listings"}
-              image={require("../assets/hamza.jpeg")}
-            ></ListItem>
-          </View>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
+    >
+      <Image
+        style={styles.image}
+        tint="light"
+        uri={listing.images[0].url}
+        preview={{ uri: listing.images[0].thumbnailUrl }}
+      />
+      <View style={styles.detailsContainer}>
+        <AppText style={styles.title}>{listing.title}</AppText>
+        <AppText style={styles.price}>${listing.price}</AppText>
+        <View style={styles.userContainer}>
+          <ListItem
+            title={"Hamza Aftab"}
+            subTitle={"4 Listings"}
+            image={require("../assets/hamza.jpeg")}
+          ></ListItem>
         </View>
-        <View style={styles.contactContainer}>
-          <ContactSellerForm listing={listing} />
-        </View>
-      </KeyboardAvoidingView>
-    </View>
+      </View>
+      <View style={styles.contactContainer}>
+        <ContactSellerForm listing={listing} />
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({

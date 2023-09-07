@@ -4,7 +4,7 @@
     "slug": "DoneIt",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/assets/icon_pic.png",
     "userInterfaceStyle": "light",
     "updates": {
       "fallbackToCacheTimeout": 0,
@@ -15,26 +15,39 @@
       "resizeMode": "cover",
       "backgroundColor": "#e63c4b"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/icon_pic.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon_pic.png"
     },
     "extra": {
       "eas": {
         "projectId": "30bbb18c-8f74-4065-a2ed-e8e5857f145a"
+      },
+      "bugsnag": {
+        "apiKey": "19ec1d866f76d0726235709116b6e357"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
     }
   }
 }
